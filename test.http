@@ -7,3 +7,11 @@ Get http://localhost:8081/listUsers
 ###
 
 POST http://localhost:8081/addUser
+
+###
+
+GET http://localhost:8081/3
+
+###
+
+DELETE http://localhost:8081/deleteUser

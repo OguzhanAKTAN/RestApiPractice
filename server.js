@@ -9,6 +9,16 @@ app.get('/listUsers', function(req,res){
     })
 })
 
+app.get('/:id', function (req, res) {
+    // First read existing users.
+    fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+       var users = JSON.parse( data );
+       var user = users["user" + req.params.id] 
+       console.log( user );
+       res.end( JSON.stringify(user));
+    });
+ })
+
 var userToBeAdded = {
     "user4":{
         "name":"Oguzhan",
@@ -26,6 +36,15 @@ app.post('/addUser', function(req,res){
     console.log( data );
     res.end( JSON.stringify(data));
     })
+})
+
+app.delete('/deleteUser',function(req,res){
+    // Read existing users
+    fs.readFile(__dirname + "/" + "users.json" , 'utf-8' , function(err,data){
+        data = JSON.parse(data);
+        delete data["user"+ 2 ]
+        res.end(JSON.stringify(data));
+    });
 })
 
 
