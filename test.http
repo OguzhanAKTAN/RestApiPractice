@@ -2,15 +2,15 @@ GET http://localhost:8081
 
 ###
 
-Get http://localhost:8081/listUsers
-
+Get http://localhost:8081/users
+content-Type: application/json
 ###
 
 POST http://localhost:8081/addUser
 
 ###
 
-GET http://localhost:8081/3
+GET http://localhost:8081/users/3
 
 ###
 
