@@ -2,6 +2,12 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 
+app.use(
+    express.urlencoded({
+      extended: true
+    })
+  )
+app.use(express.json())
 const userRouter = require('./routes/users')
 app.use('/users',userRouter)
 var userToBeAdded = {

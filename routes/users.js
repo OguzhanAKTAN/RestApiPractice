@@ -15,6 +15,7 @@ router.get('/:id', (req, res) => {
        var users = JSON.parse( data );
        var user = users["user" + req.params.id] 
        console.log( user );
+       console.log(req.body);
        res.end( JSON.stringify(user));
     });
  })
