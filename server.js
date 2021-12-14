@@ -9,7 +9,9 @@ app.use(
   )
 app.use(express.json())
 const userRouter = require('./routes/users')
+const mssqlRouter = require('./routes/mssql')
 app.use('/users',userRouter)
+app.use('/db',mssqlRouter)
 var userToBeAdded = {
     "user4":{
         "name":"Oguzhan",
