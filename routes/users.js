@@ -10,6 +10,7 @@ router.get('/', (req,res) => {
 })
 
 router.get('/:id', (req, res) => {
+    console.log("Req="+req.body+req.complete)
     // First read existing users.
     fs.readFile( __dirname + "/" + "users.json", 'utf8', (err, data) => {
        var users = JSON.parse( data );

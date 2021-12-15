@@ -25,3 +25,7 @@ DELETE http://localhost:8081/deleteUser
 
 Get http://localhost:8081/db/products
 content-Type: application/json
+
+{
+    "id": 3
+}

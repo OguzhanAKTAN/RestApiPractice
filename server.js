@@ -2,14 +2,14 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 
+const userRouter = require('./routes/users')
+const mssqlRouter = require('./routes/mssql')
 app.use(
     express.urlencoded({
       extended: true
     })
   )
 app.use(express.json())
-const userRouter = require('./routes/users')
-const mssqlRouter = require('./routes/mssql')
 app.use('/users',userRouter)
 app.use('/db',mssqlRouter)
 var userToBeAdded = {

@@ -1,21 +1,28 @@
 const express = require('express')
 const router = express.Router()
 const sql = require('mssql')
+var config = require('./dbconfig')
 
 router.get('/products',(req,res) => {
     console.log("/products")
-    async () => {
-        try {
-            console.log("uloo")
-            // make sure that any items are correctly URL encoded in the connection string
-            await sql.connect('Server=localhost,1433;Database=HermanosBeta')
-            const result = await sql.query`select * from Product `
-            console.dir(result)
-        } catch (err) {
-            // ... error checks
-            console.log(err)
-        }
-    }
+    console.log("Req="+req.body+req.complete)
+    sql.connect(config, function (err) {
+    
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+           
+        // query to the database and get the records
+        request.query('select * from Product', function (err, recordset) {
+            
+            if (err) console.log(err)
+
+            // send records as a response
+            res.send(recordset.recordset);
+            
+        });
+    });
 })
 
 module.exports = router
