@@ -4,8 +4,6 @@ const sql = require('mssql')
 var config = require('./dbconfig')
 
 router.get('/products',(req,res) => {
-    console.log("/products")
-    console.log("Req="+req.body+req.complete)
     sql.connect(config, function (err) {
     
         if (err) console.log(err);
@@ -24,5 +22,19 @@ router.get('/products',(req,res) => {
         });
     });
 })
+
+router.get('/OpenTable',(req,res)=>{
+    sql.connect(config,(err)=>{
+        if(err) console.log(err)
+
+        var request = new sql.Request()
+
+        request.query('select * from OpenTable',(err,recordset) => {
+            if (err) console.log(err)
+
+            res.send(recordset.recordset)
+        })
+    })
+})    
 
 module.exports = router
